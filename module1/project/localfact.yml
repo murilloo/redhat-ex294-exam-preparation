@@ -1,0 +1,31 @@
+- name: localfact main playbook
+  hosts: all
+
+  vars:
+    remote_dir: /etc/ansible/facts.d
+    fact_files: facts/localfact.fact
+
+  tasks:
+
+    - name: create facts directory
+      file:
+        state: directory
+        recurse: yes
+        path: "{{ remote_dir }}"
+
+    - name: copy local fact
+      copy:
+        src: "{{ fact_files }}"
+        dest: "{{ remote_dir }}"
+
+- name: install and start localfact
+  hosts: all
+  tasks:
+    - name: install packages from fact
+      yum: 
+        name: "{{ ansible_local.localfact.localfacts.package }}"
+    - name: start service
+      service:
+        name: "{{ ansible_local.localfact.localfacts.service }}"
+        state: started
+

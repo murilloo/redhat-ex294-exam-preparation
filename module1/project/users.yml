@@ -1,0 +1,22 @@
+---
+- name: create user playbook
+  hosts: ansible1.example.com
+  vars_files:
+    - vars/users-list-encrypted.yml
+  tasks:
+    - name: debug vars
+      debug:
+        msg:
+          "User {{ item.username }} Homedir {{ item.homedir }} Shell {{ item.shell }}"
+      loop: "{{ users }}"
+
+    - name: create user {{ item.users }}
+      user:
+        name: "{{ item.username }}"
+        home: "{{ item.homedir }}"
+        shell: "{{ item.shell }}"
+      loop: "{{ users }}"
+
+    - name: debug vars array
+      debug:
+        msg: "User: {{ users[0] }}"

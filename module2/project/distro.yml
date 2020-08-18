@@ -1,0 +1,17 @@
+- name: main playbook distro
+  hosts: all
+
+  vars:
+    supported_distros:
+      - Ubuntu
+      - CentOS
+      - Fedora
+ 
+  tasks:
+
+    - name: yum install
+      yum:
+        name: nginx
+        state: present
+      when: ansible_distribution in supported_distros
+

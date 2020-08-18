@@ -1,0 +1,10 @@
+- name: main playbook multiple when conditions
+  hosts: all
+  tasks:
+    - name: install httpd
+      package:
+        name: httpd
+        state: installed
+      when: 
+        - ansible_distribution == "RedHat"
+        - ansible_memfree_mb > 512

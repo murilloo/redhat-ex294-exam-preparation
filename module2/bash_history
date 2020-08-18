@@ -1,0 +1,26 @@
+ssh-keygen
+ssh-copy-id ansible1.example.com
+exit
+ssh-copy-id ansible1.example.com
+ssh-copy-id ansible2.example.com
+ssh-copy-id ansible3.example.com
+cd
+ssh ansible1.example.com
+ssh ansible2.example.com
+ssh ansible3.example.com
+sudo cat /etc/hosts
+exit
+ssh ansible1.example.com
+ssh ansible2.example.com
+ssh ansible1.example.com
+ssh ansible2.example.com
+ssh ansible3.example.com
+ls -lrt
+exit
+ssh ansible1.example.com
+ssh ansible2.example.com
+ssh ansible2
+ssh ansible1
+ssh ansible2
+ssh ansible1
+ssh ansible2

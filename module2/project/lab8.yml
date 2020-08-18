@@ -1,0 +1,11 @@
+- name: play for lab8 
+  hosts: lamp
+
+  roles:
+    - vhost
+
+  post_tasks:
+    - name: copy contents to the http server
+      copy:
+        src: ./files/html
+        dest: "/var/www/vhost/{{ ansible_hostname }}"

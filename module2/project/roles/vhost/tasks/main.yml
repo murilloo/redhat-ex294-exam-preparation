@@ -1,0 +1,30 @@
+---
+# tasks file for vhost
+
+- name: install http
+  yum:
+    name: httpd
+    state: present
+
+- name: activate httpd
+  service:
+    name: httpd
+    state: started
+    enabled: true
+
+- name: open firewalld
+  firewalld:
+    state: enabled
+    service: http
+    permanent: yes
+    immediate: yes
+
+- name: apply config
+  template:
+    src: vhost.j2
+    dest: /etc/httpd/conf.d/vhost.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart_httpd

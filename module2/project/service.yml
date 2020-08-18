@@ -1,0 +1,12 @@
+- name: start some services
+  hosts: all
+  vars:
+    my_services:
+      - sshd
+      - firewalld
+  tasks:
+    - name: start services
+      systemd:
+        name: "{{ item }}"
+        state: started
+      loop: "{{ my_services }}"

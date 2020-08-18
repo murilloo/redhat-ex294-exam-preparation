@@ -1,0 +1,23 @@
+---
+
+- name: main playbook
+  hosts: ansible2.example.com
+
+  tasks:
+
+  - name: remove httpd
+    yum:
+      name: httpd
+      state: absent
+ 
+  - name: disable firewall for access
+    firewalld:
+      service: http
+      permanent: false
+      state: disabled
+      immediate: yes
+ 
+  - name: add content
+    file:
+      path: /var/www/html/index.html
+      state: absent

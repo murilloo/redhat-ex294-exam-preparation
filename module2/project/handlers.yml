@@ -1,0 +1,29 @@
+- name: main playbook to set a web server
+  hosts: all
+
+  force_handlers: false
+
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: latest
+        
+    - name: copy html file
+      copy:
+        src: /tmp/index.html
+        dest: /var/www/html/index.html
+      notify:
+        - restart_web
+
+    - name: inteded to fail
+      copy:
+        src: /tmp/nothing
+        dest: /var/www/html/nothing.html
+ 
+  handlers:
+    - name: restart_web
+      service:
+        name: httpd
+        state: restarted
+

@@ -1,0 +1,20 @@
+- name: main playbook for failure2
+  hosts: all
+
+  tasks:
+    - name: doing something impossivel
+      lvol:
+        lv: lvnothing
+        vg: vgnothing
+        size: 1G
+      register: command_result
+      ignore_errors: yes
+
+    - name: show command results
+      debug:
+        var: command_result
+
+    - name: print nice error message
+      fail:
+        msg: volume group does not exit
+      when: "'not found' in command_result.err"

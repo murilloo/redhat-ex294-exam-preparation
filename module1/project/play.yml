@@ -1,0 +1,28 @@
+---
+
+- name: main playbook
+  hosts: ansible2.example.com
+
+  tasks:
+
+  - name: install httpd
+    yum:
+      name: httpd
+ 
+  - name: ensure http is started
+    service:
+      name: httpd
+      state: started
+      enabled: true
+
+  - name: enable firewall for access
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+      immediate: yes
+ 
+  - name: add content
+    copy:
+      content: welcome text
+      dest: /var/www/html/index.html

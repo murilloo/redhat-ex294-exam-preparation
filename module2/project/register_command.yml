@@ -1,0 +1,16 @@
+- name: main playbook register command
+  hosts: all
+
+  vars_files: 
+    - users_list
+
+  tasks:
+    - name: run command
+      shell: "cat /etc/passwd"
+      register: passwd_contents
+
+    - name: debug register
+      debug:
+        msg: "passwd contains {{ item.username }}"
+      loop: "{{ users }}"
+      when: passwd_contents.stdout.find('lisa') != -1

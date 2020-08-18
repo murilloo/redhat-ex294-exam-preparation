@@ -1,0 +1,14 @@
+- name: main playbook register vars
+  hosts: all
+
+  tasks:
+    - name: show loop register
+      shell: "echo {{ item }}"
+      loop:
+        - "one"
+        - "two"
+      register: echo
+
+    - name: debug register
+      debug:
+        var: echo

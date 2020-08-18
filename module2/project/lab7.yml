@@ -1,0 +1,68 @@
+- name: play for vsftpd installation
+  hosts: ansible2.example.com
+  tasks:
+    - name: install vsftpd
+      yum:
+        name: vsftpd
+        state: present
+    - name: start vsftpd
+      service:
+        name: vsftpd
+        enabled: true
+        state: started
+    - name: allow firewall
+      firewalld:
+        state: enabled
+        service: ftp
+        permanent: yes
+        immediate: yes
+
+- name: play for vsftpd configuration
+  hosts: ansible2.example.com
+  vars:
+    anonymous_enable: yes
+    local_enable: yes
+    write_enable: yes
+    anon_upload_enable: yes
+  tasks:
+    - name: prepare pub dir
+      file:
+        path: /var/ftp/pub
+        state: directory
+        mode: '0777'
+    - name: create config
+      template:
+        src: vsftpd.j2
+        dest: /etc/vsftpd/vsftp.conf
+    - name: install selinux policy utils
+      yum:
+        name: policycoreutils-python-utils
+        state: present
+    - name: set selinux boolean
+      seboolean:
+        name: ftpd_anon_write
+        state: yes
+        persistent: yes
+    - name: set selinux context
+      sefcontext:
+        target: '/var/ftp/pub'
+        setype: public_content_rw_t
+        state: present
+      notify: apply selinux context
+  handlers:    
+    - name: apply selinux context
+      command: restorecon -vR /var/ftp/pub
+
+- name: upload test file
+  hosts: ansible2.example.com
+  tasks:
+    - name: install lftp
+      yum:
+        name: lftp
+        state: present
+    - name: upload
+      shell: >
+        lftp ansible2.example.com << EOF
+        cd pub
+        put /etc/hosts
+        EOF

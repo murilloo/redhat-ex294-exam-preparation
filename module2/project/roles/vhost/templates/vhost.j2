@@ -1,0 +1,4 @@
+<VirtualHost *:80>
+    DocumentRoot "/var/www/vhost/{{ ansible_hostname }}/html"
+    ServerName {{ ansible_fqdn }}
+</VirtualHost>

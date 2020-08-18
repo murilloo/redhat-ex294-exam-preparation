@@ -1,0 +1,36 @@
+- name: main playbook lesson 6
+  hosts: all
+
+  force_handlers: true
+  
+  vars:
+    packages: 
+      - mariadb-server
+
+  tasks:
+    - name: install mariadb
+      yum:
+        name: "{{ packages }}"
+        state: present
+      when: ansible_distribution == "RedHat" or ansible_distribution == "CentOS"
+
+    - name: install python-mysql when centos
+      yum:
+        name: MySQL-python
+        state: present
+      when: ansible_distribution == "CentOS"
+
+    - name: check mariadb status
+      service:
+        name: mariadb
+        state: started
+        enabled: true
+      register: mariadb_start
+      notify:
+        - set db password
+
+  handlers:
+    - name: set db password
+      mysql_user:
+        name: root
+        password: password

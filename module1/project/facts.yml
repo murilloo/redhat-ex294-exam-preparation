@@ -1,0 +1,13 @@
+---
+- name: facts main playbook
+  hosts: all
+  tasks:
+
+    - name: print facts
+      debug:
+        var: ansible_facts
+
+    - name: ip facts
+      debug:
+        msg: >
+           This machine has the IP {{ ansible_facts.default_ipv4.address }}

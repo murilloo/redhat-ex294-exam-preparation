@@ -1,0 +1,392 @@
+    1  ssh-keygen
+    2  ssh-copy-id ansible1.example.com
+    3  exit
+    4  ssh-copy-id ansible1.example.com
+    5  ssh-copy-id ansible2.example.com
+    6  ssh-copy-id ansible3.example.com
+    7  cd
+    8  ssh ansible1.example.com
+    9  ssh ansible2.example.com
+   10  ssh ansible3.example.com
+   11  sudo cat /etc/hosts
+   12  exit
+   13  ssh ansible1.example.com
+   14  ssh ansible2.example.com
+   15  ssh ansible1.example.com
+   16  ssh ansible2.example.com
+   17  ssh ansible3.example.com
+   18  ls -lrt
+   19  exit
+   20  ssh ansible1.example.com
+   21  ssh ansible2.example.com
+   22  ls -rlt
+   23  sudo su
+   24  ls -rlt
+   25  cd project/
+   26  ls -rlt
+   27  clear
+   28  ansible all -^Cansible -a "name=lisa" -i inventory
+   29  ls -rlt
+   30  clçear
+   31  clear
+   32  ansible all -^Cansible -a "name=lisa" -i inventory
+   33  ansible all -m user -a "name=lisa" -i inventory
+   34  vi ansible.cfg
+   35  clear
+   36  ansible all -m user -a "name=lisa" -i inventory
+   37  vi ansible.cfg
+   38  ansible all -m user -a "name=lisa" -i inventory
+   39  vi ansible.cfg
+   40  ansible all -m user -a "name=lisa" -i inventory
+   41  pwd
+   42  ls -rlt
+   43  ansible all -m user -a "name=lisa" 
+   44  ansible all -m user -a "name=lisa" -i inventory 
+   45  ansible --version
+   46  ansible all -m user -a "name=lisa" -i inventory 
+   47  ansible all -m user -a "name=lisa" 
+   48  cd in
+   49  ls -rlt
+   50  ansible all -m user -a "name=lisa" -i inventory 
+   51  ansible -m user -a "name=lisa" -i inventory 
+   52  ansible
+   53  ansible web -m user -a "name=lisa" -i inventory 
+   54  ls -rlt
+   55  cleasr
+   56  ls -rlt
+   57  vi ansible.cfg 
+   58  mkdir inventories
+   59  cp inventor inventories/hosts
+   60  cp inventory inventories/hosts
+   61* ls -rl
+   62  ansible web -m user -a "name=lisa" 
+   63  ansible all -m user -a "name=lisa" 
+   64  ls -rlt
+   65  vi ansible.cfg 
+   66  ansible all -m user -a "name=lisa" 
+   67  ansible all -m user -a "name=lisa" -i inventories/hosts
+   68  ansible all -m user -a "name=lisa" -i inventory 
+   69  clear
+   70  ls -rlt
+   71  ansible all -m user -a "name=lisa state=absent" -i inventory 
+   72  ansible all -m command -a "id lisa"
+   73  ansible all -m command -a "id lisa" -i inventor
+   74  ansible all -m command -a "id lisa" -i inventory
+   75  ansible all -m command -a "id ansible" -i inventory
+   76  clear
+   77  ansible-doc -l
+   78  clear
+   79  ansible-doc -l
+   80  ansible-doc 
+   81  ansible-doc -m ssh
+   82  ansible-doc -M ssh
+   83  ansible-doc -s ssh
+   84  ansible-doc ssh
+   85  ansible-doc user
+   86  ansible-doc ssh
+   87  ansible-doc sshd
+   88  ansible-doc 
+   89  ansible-doc file
+   90  ansible-doc template
+   91  ansible-doc 
+   92  ansible-doc -s user
+   93  ansible-doc -s file
+   94  ls -rtlt
+   95  rm -rf inventories/hosts 
+   96  ls -rlt
+   97  rm -rf inventories/
+   98  ls -rlt
+   99  vi ansible.cfg 
+  100  ansible all -m ping
+  101  vi inventory 
+  102  ansible all -m service -a "service=sshd"
+  103  ansible ansible2.example.com -m command -a "/sbin/reboot"
+  104  ansible all -m ping
+  105  ansible all -m copy -a 'content="Hello World" dest=/etc/motd'
+  106  ansible all -m command -a "cat /etc/motd"
+  107  vi inventory 
+  108  ansible all -m ping
+  109  ansible -u root -i inventory ansible3.example.com --ask-pass -raw -a 'yum install python3 -y'
+  110  ansible -u root -i inventory ansible3.example.com --ask-pass -m raw -a 'yum install python3 -y'
+  111  pwd
+  112  ansible -u root -i inventory ansible3.example.com --ask-pass -m raw -a 'yum install python3 -y'
+  113  ls -rlt
+  114  vi play.yml
+  115  vi ping.yml
+  116  ansible-playbook -i inventory play.yml 
+  117  ansible-playbook -vvv -i inventory play.yml 
+  118  vi ping.yml
+  119  vi play.yml 
+  120  rm ping.yml 
+  121  vi play.yml 
+  122  ansible-playbook -vvv -i inventory play.yml 
+  123  ansible-playbook -i inventory play.yml 
+  124  cat play.yml 
+  125  ls -lrt
+  126  cat play.yml 
+  127  ansible-playbook -i inventory -C play.yml 
+  128  ansible-playbook -i inventory play.yml 
+  129  vi inventory 
+  130  vi play.yml 
+  131  ansible-playbook -i inventory play.yml 
+  132  cd
+  133  vi .vimrc
+  134  vi tst.yml
+  135  clear
+  136  ls -lrt
+  137  cd project/
+  138  ls -rlt
+  139  vi play.yml 
+  140  ansible-playbook -i inventory play.yml 
+  141  vi play.yml 
+  142  ansible-playbook -i inventory play.yml 
+  143  vi play.yml 
+  144  ansible-playbook -i inventory play.yml 
+  145  vi play.yml 
+  146  ansible-playbook -i inventory play.yml 
+  147  vi play.yml 
+  148  ansible-playbook -i inventory play.yml 
+  149  cp play.yml undo.yml
+  150  vi undo.yml 
+  151  ansible-playbook -i inventory play.yml 
+  152  ansible-playbook play.yml 
+  153  ansible-playbook undo.yml 
+  154  vi undo.yml 
+  155  ansible-playbook undo.yml 
+  156  vi undo.yml 
+  157  ansible-playbook undo.yml 
+  158  vi undo.yml 
+  159  ansible-playbook undo.yml 
+  160  vi undo.yml 
+  161  ansible-playbook undo.yml 
+  162  vi undo.yml 
+  163  ansible-playbook -i inventory play.yml 
+  164  ansible-playbook undo.yml 
+  165  ansible ansible2.example.com -m command -a "rpm -qa | grep http"
+  166  ansible ansible2.example.com -m command -a "rpm -qa http"
+  167  ansible ansible2.example.com -m command -a "rpm -qa http*"
+  168  ansible ansible2.example.com -m shell -a "rpm -qa | grep httpd"
+  169  ansible ansible2.example.com -m shell -a "systemctl status httpd"
+  170  ansible ansible2.example.com -m shell -a "sudo systemctl status httpd"
+  171  ls -rlt
+  172  vi users.yml
+  173  ansible-playbook users.yml 
+  174  ansible ansible1.example.com -m shell -a "grep lisa /etc/passwd"
+  175  ansible-playbook users.yml 
+  176  vi users.yml
+  177  mkdir group_vars
+  178  cd group_vars/
+  179  ls -lrt
+  180  cd ..
+  181  vi inventory 
+  182  cd group_vars/
+  183  mkdir web
+  184  cdwe
+  185  cd web/
+  186  ls -rlt
+  187  vi vars
+  188  ls -rlt
+  189  cd ..
+  190  ls -rlt
+  191  cd ..
+  192  ls -rlt
+  193  vi users.yml 
+  194  ansible-playbook -i inventory users.yml 
+  195  vi users.yml 
+  196  ansible-playbook -i inventory users.yml 
+  197  ansible-playbook users.yml 
+  198  vi users.yml 
+  199  ls -rlt
+  200  cd group_vars/
+  201  ls -rlt
+  202  cd web/
+  203  ls -rlt
+  204  vi vars 
+  205  cd ..
+  206  ls -rlt
+  207  cat users.yml 
+  208  vi inventory 
+  209  ls -rlt
+  210  mkdir vars
+  211  cd vars
+  212  vi users.yml
+  213  ls -rlt
+  214  rm users.yml 
+  215  vi users-list
+  216  vi users-list.yml
+  217  vi users-dic.yml
+  218  ls -rlt
+  219  cd ..
+  220  ls -rlt
+  221  vi loop.yml
+  222  vi users.yml 
+  223  vi vars/users-
+  224  vi vars/users-list.yml 
+  225  ansible-playbook users.yml 
+  226  vi users.yml 
+  227  ansible-playbook users.yml 
+  228  vi users.yml 
+  229  vi vars/users-
+  230  vi vars/users-list.yml 
+  231  vi users.yml 
+  232  vi vars/users-list.yml 
+  233  ansible-playbook users.yml 
+  234  vi users.yml 
+  235  vi vars/users-list.yml 
+  236  vi users.yml 
+  237  ansible-playbook users.yml 
+  238  vi vars/users-list.yml 
+  239  ansible-playbook users.yml 
+  240  vi vars/users-list.yml 
+  241  vi users.yml 
+  242  vi vars/users-list.yml 
+  243  ansible-playbook users.yml 
+  244  vi vars/users-list.yml 
+  245  vi users.yml 
+  246  vi vars/users-list.yml 
+  247  ansible-playbook users.yml 
+  248  vi vars/users-list.yml 
+  249  vi users.yml 
+  250  ansible-playbook users.yml 
+  251  ls -rlt
+  252  cd vars
+  253  ls -rlt
+  254  cd ..
+  255  ls -rlt
+  256  vi users.yml 
+  257  ansible-playbook users.yml 
+  258  vi users.yml 
+  259  ansible-playbook users.yml 
+  260  vi users.yml 
+  261  ansible-playbook users.yml 
+  262  vi users.yml 
+  263  ls -rlt
+  264  cat ansible.cfg 
+  265  ls -rlt
+  266  cat inventory 
+  267  vi users.yml 
+  268  cd vars/
+  269  ls -rtl
+  270  cat users-dic.yml 
+  271  ls -rlt
+  272  cp users-list.yml users-list-encrypted.yml
+  273  cd ..
+  274  ls -rlt
+  275  cd vars/
+  276  ls -rlt
+  277  ansible-vault encrypt users-list-encrypted.yml 
+  278  cat users-list-encrypted.yml 
+  279  cd ..
+  280  ls -rtl
+  281  vi users.yml 
+  282  ansible-playbook users.yml --ask-vault-pass
+  283  ansible -m setup all
+  284  vi facts.yml
+  285  ansible-playbook facts.yml 
+  286  vi facts.yml
+  287  ansible-playbook facts.yml 
+  288  ls -lrt
+  289  vi facts.yml 
+  290  ansible-playbook facts.yml 
+  291  vi facts.yml 
+  292  ansible-playbook facts.yml 
+  293  vi facts.yml 
+  294  ansible-playbook facts.yml 
+  295  vi facts.yml 
+  296  ansible-playbook facts.yml 
+  297  vi facts.yml 
+  298  ansible-playbook facts.yml 
+  299  ansible-playbook -vvv facts.yml 
+  300  ansible-playbook facts.yml 
+  301  vi facts.yml 
+  302  ansible-playbook facts.yml 
+  303  vi facts.yml 
+  304  ansible-playbook facts.yml 
+  305  vi facts.yml 
+  306  cat facts.yml 
+  307  ansible-playbook facts.yml 
+  308  cat facts.yml 
+  309  vi facts.yml 
+  310  ansible-playbook facts.yml 
+  311  vi facts.yml 
+  312  ansible-playbook facts.yml 
+  313  ls -lrt
+  314  vi localfact.yml
+  315  ansible-playbook localfact.yml 
+  316  touch localfacts.fact
+  317  vi localfact
+  318  touch localfacts.fact
+  319  vi localfact
+  320  ansible-playbook localfact.yml 
+  321  ansible all -m setup -a "filter=ansible_local"
+  322  ansible-playbook localfact.yml 
+  323  ls -rlt
+  324  cat localfact
+  325  rm localfact.fa
+  326  ls -rlt
+  327  rm localfacts.fact 
+  328  mv localfact localfact.fact
+  329  ls -rlt
+  330  mkdir facts
+  331  mv localfact.fact facts
+  332  vi localfact.yml 
+  333  ansible-playbook localfact.yml 
+  334  ls -rlt
+  335  cat localfact.yml 
+  336  cd facts/
+  337  ls -rlt
+  338  cat localfact.fact 
+  339  cd ..
+  340  ls -rlt
+  341  vi localfact.yml 
+  342  ansible-playbook localfact.yml 
+  343  vi localfact.yml 
+  344  ansible-playbook localfact.yml 
+  345  vi localfact.yml 
+  346  cd facts/
+  347  ls -rlt
+  348  mv localfact.fact  ../
+  349  ls -rltr
+  350  cd ..
+  351  ansible-playbook localfact.yml 
+  352  ls -rlt
+  353  mv localfact.fact facts
+  354  ls -rlt
+  355  vi localfact.yml 
+  356  ansible-playbook localfact.yml 
+  357  ansible all -m setup -a "filter=ansible_local"
+  358  vi localfact.yml 
+  359  vi facts/localfact.fact 
+  360  ansible all -m setup -a "filter=ansible_local"
+  361  ansible-playbook localfact.yml 
+  362  ansible all -m setup -a "filter=ansible_local"
+  363  vi localfact.yml 
+  364  vi facts/localfact.fact 
+  365  vi localfact.yml 
+  366  ansible-playbook localfact.yml 
+  367  vi localfact.yml 
+  368  ansible all -m setup -a "filter=ansible_local"
+  369  vi localfact.yml 
+  370  ansible all -m setup -a "filter=ansible_local"
+  371  ansible-playbook localfact.yml 
+  372  vi facts/localfact.fact 
+  373  ansible all -m command -a "rpm -ql samba"
+  374  ansible all -m command -a "rpm -ql samba | grep smb"
+  375  ansible all -m shell -a "rpm -ql samba | grep smb"
+  376  vi facts/localfact.fact 
+  377  ansible-playbook localfact.yml 
+  378  clear
+  379  ls -rlt
+  380  cd ..
+  381  ls -rlt
+  382  mkdir module1
+  383  cp -R project/ module1/
+  384  ls -rlt
+  385  cd module1/
+  386  ls -rlt
+  387  cd project/
+  388  ls -rtl
+  389  cd
+  390  clear
+  391  history
+  392  history > module1/bash_history
