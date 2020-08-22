@@ -1,0 +1,28 @@
+- name: playbook to check all devices on managed hosts
+  hosts: all
+
+  vars:
+    disks: []
+
+  tasks:
+
+    - name: setup
+      setup:
+      register: factone
+
+#    - name: print factone
+#      debug:
+#        msg: "{{ factone }}"
+
+    - set_fact:
+        all_devices: "{{ factone.ansible_facts.ansible_devices }}"
+
+    - name: Return data from parent
+      set_fact:
+        disks: "{{ disks + [ item.key ] }}"
+      with_dict: "{{ all_devices }}"
+      when: item.value.host
+
+    - name: Diag
+      debug:
+        msg: "{{ disks }}"

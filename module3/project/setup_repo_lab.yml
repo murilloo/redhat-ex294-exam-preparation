@@ -1,0 +1,45 @@
+- name: main playbook to configure FTP server
+  hosts: localhost
+
+  tasks:
+
+    - name: install FTP server
+      yum:
+        name: vsftpd
+        state: latest
+
+    - name: start FTP server
+      service:
+        name: vsftpd
+        state: started
+        enabled: yes
+
+    - name: open the firewall
+      firewalld:
+        service: ftp
+        state: enabled
+        permanent: yes
+
+
+- name: main playbook to setup repository
+  hosts: localhost
+
+  tasks:
+
+    - name: make directory for the repo
+      file:
+        path: /var/ftp/repo
+        state: directory
+
+    - name: install dnf utils
+      yum:
+        name: 
+        - dnf-utils
+        - createrepo
+        state: latest
+
+    - name: download sample package
+      command: yumdownloader nmap --destdir /var/ftp/repo
+
+    - name: createrepo
+      command: createrepo /var/ftp/repo

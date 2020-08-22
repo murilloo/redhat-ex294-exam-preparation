@@ -1,0 +1,27 @@
+- name: playbook to check all devices on managed hosts
+  hosts: all
+
+  vars:
+    ips: []
+
+  tasks:
+
+    - name: setup
+      setup:
+      register: factone
+
+#    - name: print factone
+#      debug:
+#        msg: "{{ factone }}"
+
+    - set_fact:
+        all_ips: "{{ factone.ansible_facts.ansible_all_ipv4_addresses }}"
+
+    - name: Return data from parent
+      set_fact:
+        ips: "{{ ips + [ item ] }}"
+      loop: "{{ all_ips }}"
+
+    - name: Diag
+      debug:
+        msg: "{{ ips }}"

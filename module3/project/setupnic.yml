@@ -1,0 +1,12 @@
+- name: playbook to setup network interface
+  hosts: ansible1.example.com
+
+  tasks:
+
+    - name: configure NIC
+      nmcli:
+        conn_name: new-conn
+        ifname: enp8s0
+        type: ethernet
+        ip4: 192.168.122.100
+        state: present

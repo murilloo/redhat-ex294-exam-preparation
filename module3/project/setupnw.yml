@@ -1,0 +1,8 @@
+---
+- name: NIC configuration
+  hosts: ansible1.example.com
+  tasks:
+  - include_vars:
+      file: networkvars.yml
+  roles:
+    - rhel-system-roles.network

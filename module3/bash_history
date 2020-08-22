@@ -1,0 +1,706 @@
+    1  ssh-keygen
+    2  ssh-copy-id ansible1.example.com
+    3  exit
+    4  ssh-copy-id ansible1.example.com
+    5  ssh-copy-id ansible2.example.com
+    6  ssh-copy-id ansible3.example.com
+    7  cd
+    8  ssh ansible1.example.com
+    9  ssh ansible2.example.com
+   10  ssh ansible3.example.com
+   11  sudo cat /etc/hosts
+   12  exit
+   13  ssh ansible1.example.com
+   14  ssh ansible2.example.com
+   15  ssh ansible1.example.com
+   16  ssh ansible2.example.com
+   17  ssh ansible3.example.com
+   18  ls -lrt
+   19  exit
+   20  ssh ansible1.example.com
+   21  ssh ansible2.example.com
+   22  ssh ansible2
+   23  ssh ansible1
+   24  ssh ansible2
+   25  ssh ansible1
+   26  ssh ansible2
+   27  ls -rlt
+   28  cd project/
+   29  ls -rlt
+   30  cd ..
+   31  ls -rlt
+   32  cd module1
+   33  ls -rlt
+   34  cd ..
+   35  cd module2/
+   36  ls -rlt
+   37  cd ..
+   38  ls -rlt
+   39  cd project/
+   40  ls -rlt
+   41  cd ..
+   42  ls -rlt
+   43  exit
+   44  ls -rlt
+   45  mkdir -p /tmp/copy
+   46  cp -R module1 module2/ /tmp/copy/
+   47  exit
+   48  ls -rlt
+   49  zip rhce.zip module1/* module2/*
+   50  ls -rlt
+   51  chmod 777 rhce.zip ; mv rhce.zip /tmp
+   52  exit
+   53  ls -rlt
+   54  cd module1
+   55  ls -r4lt
+   56  ls -rlt
+   57  cd project/
+   58  ls -rlt
+   59  cd
+   60  clear
+   61  ls -rlt
+   62  cd rhce8/
+   63  ls -rlt
+   64  cd ..
+   65  ls -rlt
+   66  zip rhce.zip *
+   67  zip -R rhce.zip *
+   68  man zip
+   69  zip -r rhce.zip *
+   70  ls -rlt
+   71  chmod 777 rhce.zip /tmp/rhce.zip 
+   72  chmod 777 rhce.zip ; mv rhce.zip /tmp/rhce.zip 
+   73  ls -rlt
+   74  exit
+   75  clear
+   76  ls -rlt
+   77  clear
+   78  ls -rlt
+   79  cd project/
+   80  ls -rlt
+   81  cat ansible.cfg 
+   82  cat ~/.vimrc 
+   83  ls -rlt
+   84  cd ..
+   85  ls -rlt
+   86  cd module1
+   87  ls -rlt
+   88  cd ..
+   89  ls -rlt
+   90  clear
+   91  cd project/
+   92  clear
+   93  ls -rlt
+   94  cd ..
+   95  cd rhce8/
+   96  ls -rlt
+   97  cd lesson12/
+   98  ls -rlt
+   99  clear
+  100  ls -rlt
+  101  vi setup_repo.yml 
+  102  ls -rlt
+  103  vi inventory 
+  104  ls -rlt
+  105  cd ..
+  106  ls -rlt
+  107  vi setup_repo.yml 
+  108  ls- rlt
+  109  ls -rlt
+  110  vi setup_repo.yml 
+  111  cd ..
+  112  clear
+  113  ls -rlt
+  114  cd project/
+  115  ls -rltg
+  116  ls -rlt
+  117  vi setup_repo.yml
+  118  ls -rlt
+  119  cd ..
+  120  ls -rlt
+  121  cd rhce8/
+  122  ls -rlt
+  123  vi setup_repo.yml 
+  124  cd ..
+  125  cd project/
+  126  ls -rplt
+  127  ansible-playbook setup_repo.yml 
+  128  vi setup_repo.yml 
+  129  ansible-playbook setup_repo.yml 
+  130  ansible ansible2.example.com -a cat /etc/yum.repos.d/lesson12
+  131  ansible ansible2.example.com -a "cat /etc/yum.repos.d/lesson12"
+  132  vi setup_repo.yml 
+  133  ansible ansible2.example.com -a "ls -lrt /etc/yum.repos.d/"
+  134  ansible ansible2.example.com -a "cat /etc/yum.repos.d/lesson12.repo"
+  135  ls -rlt
+  136  vi setup_repo_lab.yml
+  137  ansible-docs firewalld
+  138  ansible-doc firewalld
+  139  ls -rlt
+  140  clear
+  141  exit
+  142  clear
+  143  ls -rlt
+  144  cd project/
+  145  ls -rlt
+  146  vi setup_repo_lab.yml 
+  147  vi ../rhce8/lesson12/setup_repo.yml 
+  148  vi ../rhce8/lesson12/setup_repo_client.yml 
+  149  ls -rt
+  150  ls -rlt
+  151  vi setup_repo_lab.yml 
+  152  ansible-playbook setup_repo_lab.yml 
+  153  vi setup_repo_lab.yml 
+  154  ansible-playbook setup_repo_lab.yml 
+  155  vi setup_repo_lab.yml 
+  156  ansible-playbook setup_repo_lab.yml 
+  157  vi setup_repo_lab.yml 
+  158  ansible-playbook setup_repo_lab.yml 
+  159  vi setup_repo_lab.yml 
+  160  ansible-playbook setup_repo_lab.yml 
+  161  ls /var/ftp/repo/
+  162  ls -rlt
+  163  vi setup_repo_lab.yml 
+  164  ls -rlt
+  165  vi setup_repo_lab_client.yml
+  166  vi setup_repo.yml 
+  167  ansible-playbook setup_repo.yml 
+  168  ls -rlt
+  169  ls -rlty
+  170  clear
+  171  ls -rlt
+  172  vi setup_users.yml
+  173  mkdir vars
+  174  cd vars
+  175  vi users
+  176  vi groups
+  177  vi users
+  178  vi groups
+  179  ls -rlt
+  180  cd ..
+  181  ls -rlt
+  182  vi setup_users.yml 
+  183  vi groups
+  184  vi vars/groups 
+  185  vi setup_users.yml 
+  186  vi vars/groups 
+  187  vi setup_users.yml 
+  188  vi vars/groups 
+  189  vi setup_users.yml 
+  190  mkdir files
+  191  ls -rlt
+  192  cd files/
+  193  ls -rlt
+  194  mkdir linda
+  195  mkdir lucy
+  196  mkdir lori
+  197  mkdir lisa
+  198  ls -rlt
+  199  cd li
+  200  cd linda/
+  201  ls -rlt
+  202  ssh-keygen 
+  203  man ssh-keygen
+  204  vi ../../setup_users.yml 
+  205   ssh-keygen -f .
+  206   ssh-keygen -f id_rsa.pub
+  207  ls -lrt
+  208  rm -rf *
+  209  ls -rlt
+  210   ssh-keygen -f id_rsa
+  211  ls -rlt
+  212  cd ..
+  213  ls -rlt
+  214  cd lucy/
+  215   ssh-keygen -f id_rsa
+  216  ls -rlt
+  217  cd ..
+  218  ls -rlt
+  219  cd li
+  220  cd lisa
+  221  ls -rlt
+  222   ssh-keygen -f id_rsa
+  223  ls -rlt
+  224  cd ..
+  225  tree
+  226  cd lori
+  227   ssh-keygen -f id_rsa
+  228  ls -rlt
+  229  cd ..
+  230  ls -rlt
+  231  cd ..
+  232  ls -rlt
+  233  ansible-playbook setup_users.yml 
+  234  vi setup_users.yml 
+  235  ansible-playbook setup_users.yml 
+  236  vi setup_users.yml 
+  237  ansible-playbook setup_users.yml 
+  238  vi setup_users.yml 
+  239  ansible-playbook setup_users.yml 
+  240  ls -rlt
+  241  cd ..
+  242  ls -rlt
+  243  cd project/
+  244  ls -rlt
+  245  cd vars
+  246  vi defaults
+  247  cd ..
+  248  vi sudoers.j2
+  249  ls -rlt
+  250  cd ..
+  251  cd rhce8/
+  252  ls -rlt
+  253  cd lesson13
+  254  ls -rlt
+  255  vi setup_sudo.yml 
+  256  ansible-playbook setup_sudo.yml 
+  257  vi vars/defaults 
+  258  vi setup_sudo.yml 
+  259  vi vars/groups 
+  260  vi setup_sudo.yml 
+  261  ls -rlt
+  262  ls -rlt vars/
+  263  vi setup_sudo.yml 
+  264  ansible-playbook setup_sudo.yml 
+  265  ansible all -i localhost, -m debug -a "msg={{ 'mypassword' | password_hash('sha512', 'mysecretsalt') }}"
+  266  ls -rlt
+  267  cd ..
+  268  ls -rlt
+  269  cd ..
+  270  cd project/
+  271  ls -rlt
+  272  cd ..
+  273  cd rhce8/
+  274  cd lesson13
+  275  ls -rlt
+  276  vi setup_
+  277  vi setup_sudo.yml 
+  278  cd vars
+  279  ls -rlt
+  280  cp groups lab_groups
+  281  cp users lab_users
+  282  vi lab_groups 
+  283  cd vars
+  284  ls -rlt
+  285  cat defaults 
+  286  cd ..
+  287  ls -rlt
+  288  vi setup_sudo.yml 
+  289  cd ..
+  290  ls -lrt
+  291  cd ..
+  292  ls -rlt
+  293  cd rhce8/
+  294  ls -rlt
+  295  cd lesson14/
+  296  ls -rlt
+  297  ansible-playbook setup-crontab.yml 
+  298  ansible ansible2.example -a "ls -lrt /etc/cron.d/
+  299  ansible ansible2.example -a "ls -lrt /etc/cron.d/"
+  300  ansible ansible2.example -a "ls /etc/cron.d/"
+  301  ansible ansible2.example.com -a "ls /etc/cron.d/"
+  302  ansible ansible2.example.com -a "cat /etc/cron.d/keep-alive-messages"
+  303  ls -lrt
+  304  vi delete-cron-job.yml 
+  305  ansible-playbook delete-cron-job.yml 
+  306  vi delete-cron-job.yml 
+  307  ls -lrt
+  308  vi setup-at-task.yml 
+  309  ansible-playbook setup-at-task.yml 
+  310  ansible-playbook -i inventory/ansible2.example.com setup-at-task.yml 
+  311  vi inventory 
+  312  ansible-playbook -i inventory/file setup-at-task.yml 
+  313  ls -rlt
+  314  ansible-playbook -i file setup-at-task.yml 
+  315  vi setup-at-task.yml 
+  316  ansible-playbook -i file setup-at-task.yml 
+  317  ansible-playbook setup-at-task.yml 
+  318  ansible ansible2.example.com -a "rpm -qa at"
+  319  ansible ansible2.example.com -m yum -a  "name=at state=present"
+  320  ansible ansible1.example.com -m yum -a  "name=at state=present"
+  321  ls -lrt
+  322  ansible-playbook setup-boot-target.yml 
+  323  vi setup-boot-target.yml 
+  324  vi lab.yml 
+  325  ansible-playbook lab.yml 
+  326   cd ..
+  327  cd lesson15/
+  328  ls -rlt
+  329  ansible-playbook setup-storage.yml 
+  330  vi inventory 
+  331  ansible-playbook setup-storage.yml 
+  332  vi inventory 
+  333  ansible-playbook setup-storage.yml 
+  334  vi setup-storage.yml 
+  335  ansible-playbook setup-storage.yml 
+  336  vi setup-storage.yml 
+  337  ls -rlt
+  338  cd ..
+  339  ls -rlt
+  340  cd ..
+  341  cd prio
+  342  cd project/
+  343  ls -rlt
+  344  vi createuser.yml
+  345  ansible ansible2.example.com -m debug -a "msg={{ 'mypassword' | password_hash('sha512', 'mysecretsalt') }}"
+  346  vi createuser.yml 
+  347  ansible-playbook createuser.yml 
+  348  vi createuser.yml 
+  349  ssh ansible12
+  350  ssh ansible1
+  351  ssh anna@ansible1
+  352  exit
+  353  ls -rlt
+  354  cd rhce8/
+  355  ls -rlt
+  356  git pull
+  357  git log
+  358  git pull
+  359  git status
+  360  cd lesson13/
+  361  cd vars
+  362  ls -rlt
+  363  vi lab_groups 
+  364  vi lab_users 
+  365  vi lab_groups 
+  366  ls -rlt
+  367  cd ..
+  368  ls -rlt
+  369  cp -R vars/ ../../project/
+  370  cp cd ..
+  371  cd pro
+  372  ls -rlt
+  373  cd ..
+  374  cd project/
+  375  ls -rlt
+  376  cd vars
+  377  ls -rlt
+  378  cd ..
+  379  ls -rlt
+  380  cp ../rhce8/lesson13/setup_users.yml lab.yml
+  381  ls -rlt
+  382  vi lab.yml 
+  383  ls -lrt
+  384  rm lab.yml 
+  385  ls -rlt
+  386  vi setup_users.yml 
+  387  cd ..
+  388  ls -rlt
+  389  cd rhce8/lesson13/
+  390  ls -rlt
+  391  vi setup_sudo.yml 
+  392  cp setup_sudo.yml ../../project/
+  393  cd 
+  394  ls -rlt
+  395  cd project/
+  396  ls -rlt
+  397  vi setup_sudo.yml 
+  398  ansible-playbook setup_sudo.yml 
+  399  vi setup_sudo.yml 
+  400  mv setup_sudo.yml  lab.yml
+  401  ansible-playbook lab.yml 
+  402  vi lab.yml 
+  403  vi vars/lab_groups 
+  404  vi vars/lab_users 
+  405  ansible-playbook lab.yml 
+  406  ls -rlt
+  407  cd files
+  408  ls -rlt
+  409  mkdir bill
+  410  cd bill
+  411   ssh-keygen -f id_rsa
+  412  cd ..
+  413  ls -rlt
+  414  ansible-playbook lab.yml 
+  415  cd files/
+  416  ls -rlt
+  417  mkdir bob
+  418  mkdir benny
+  419  cd bob
+  420   ssh-keygen -f id_rsa
+  421  cd ..
+  422  cd benny/'
+  423  cd benny/
+  424   ssh-keygen -f id_rsa
+  425  cd ..
+  426  ls -rlt
+  427   ssh-keygen -f id_rsa
+  428  ansible-playbook lab.yml 
+  429  cd files/
+  430  ls -rlt
+  431  mkdir bea
+  432  cd bea
+  433   ssh-keygen -f id_rsa
+  434  cd ..
+  435  ansible-playbook lab.yml 
+  436  cd files/
+  437  mkdir brenda
+  438  cd brenda/
+  439   ssh-keygen -f id_rsa
+  440  cd ..
+  441  ansible-playbook lab.yml 
+  442  ls -rlt
+  443  cd ..
+  444  cd rhce8/
+  445  cd lesson14/
+  446  ls -rlt
+  447  cat setup-crontab.yml 
+  448  cd ;;
+  449  cd ..
+  450  cd project/
+  451  ls -rlt
+  452  vi setup-cron-job.yml
+  453  ansible-playbook setup
+  454  ansible-playbook setup-cron-job.yml 
+  455  vi setup-cron-job.yml 
+  456  ansible-playbook setup-cron-job.yml 
+  457  ansible ansible1.example.com -a "ls -rlt /etc/crond.d"
+  458  ansible ansible1.example.com -a "ls -rlt /etc/cron.d"
+  459  ansible ansible1.example.com -a "cat /etc/cron.d/keep-alive-messages"
+  460  vi delete-cron-job.yml
+  461  ansible-playbook delete-cron-job.yml 
+  462  ls -rlt
+  463  vi setup-at-task.yml
+  464  ansible-playbook setup
+  465  ansible-playbook setup-at-task.yml 
+  466  cp ../rhce8/lesson14/setup-boot-target.yml .
+  467  vi setup-boot-target.yml 
+  468  ansible-playbook setup-boot-target.yml 
+  469  vi setup-boot-target.yml 
+  470  ansible-playbook setup-boot-target.yml 
+  471  cp ../rhce8/lesson14/lab.yml .
+  472  ls -rlt
+  473  vi lab.yml 
+  474  ansible-playbook lab.yml 
+  475  ls -rlt
+  476  cd ..
+  477  cd rhce8/lesson13/
+  478  ls -rlt
+  479  vi setup_sudo.yml 
+  480  cd ..
+  481  cd project/
+  482  ls -rlt
+  483  cp ../rhce8/lesson13/setup_sudo.yml .
+  484  ls -rlt
+  485  vi setup_sudo.yml 
+  486  ansible-playbook setup_sudo.yml 
+  487  vi setup_sudo.yml 
+  488  ansible-playbook setup_sudo.yml 
+  489  ls -lrt
+  490  mv lab13.yml
+  491  mv lab.yml lab14.tml
+  492  mv lab14.tml lab14.yml
+  493  mv setup_sudo.yml lab13.yml
+  494  ls -rlt
+  495  clear
+  496  ls -rlt
+  497  vi setup-boot-target.yml 
+  498  vi lab14.yml 
+  499  vi lab13.yml 
+  500  vi sudoers.j2 
+  501  vi lab13.yml 
+  502  vi vars/defaults 
+  503  vi lab13.yml 
+  504  vi sudoers.j2 
+  505  vi lab13.yml 
+  506  ansible ansible2.example.com -a "ls -rlt /etc/sudoers.d"
+  507  ansible ansible2.example.com -a "cat /etc/sudoers.d/sales"
+  508  ansible ansible2.example.com -a "cat /etc/sudoers.d/sudogroups"
+  509  vi lab13.yml 
+  510  vi sudoers.j2 
+  511  cd ..
+  512  cd rhce8/
+  513  ls -rlt
+  514  cd lesson13/
+  515  ls -rlt
+  516  vi sudoers.j2 
+  517  vi setup_sudo.yml 
+  518  vi sudoers.j2 
+  519  vi setup_users.yml 
+  520  ls -rlt
+  521  vi setup_users.yml 
+  522  cd ..
+  523  cd project/
+  524  ls -rlt
+  525  grep -Ri regex
+  526  vi setup_users.yml 
+  527  ls -rlt
+  528  cd project/
+  529  ls -rlt
+  530  vi lab14.yml 
+  531  ssh ansible1
+  532  clear
+  533  ls -rlt
+  534  cd ..
+  535  cd rhce8/
+  536  ls -rlt
+  537  cd lesson15/
+  538  ls -rlt
+  539  cd vars
+  540  ls -rlt
+  541  cp storage.yml ../../../project/vars/
+  542  ls -rlt
+  543  cd ..
+  544  ls -rlt
+  545  cp setup-storage.yml ../../project/
+  546  cd ..
+  547  ls -rlt
+  548  cd project/
+  549  ls -rlt
+  550  vi vars/storage.yml 
+  551  ansible ansible1.example.com -a "fdisk -l"
+  552  ansible ansible1.example.com -a "ls -rlt"
+  553  ssh ansible1
+  554  uname -a
+  555  cat /etc/redhat-release 
+  556  virsh
+  557  sudo yum search virshg
+  558  sudo yum search virsh
+  559  exit
+  560  ansible ansible1.example.com -a "ls"
+  561  ping ansible1
+  562  ansible ansible1 -a "ls"
+  563  ls -rlt
+  564  cd project/
+  565  ls -rlt
+  566  ansible ansible1 -a "ls"
+  567  ansible ansible1.example.com -a "ls"
+  568  ansible ansible1.example.com -a "fdisk -l"
+  569  ls -rlt
+  570  exit
+  571  ls -rlt
+  572  cd project/
+  573  ls -rlt
+  574  cat vars/storage.yml 
+  575  ansible ansible1.example.com -a "fdisk -l"
+  576  cd project/
+  577  ansible ansible1.example.com -a "fdisk -l"
+  578  ssh ansible1
+  579  fdisk -l
+  580  ssh ansible1
+  581  ls-rlt
+  582  cd vars
+  583  ls -rlt
+  584  vi storage.yml 
+  585  cd ..
+  586  ls -rlt
+  587  vi setup-storage.yml 
+  588  ansible-playbook setup-storage.yml 
+  589  vi setup-storage.yml 
+  590  vi vars/storage.yml 
+  591  vi ../rhce8/lesson15/setup-storage.yml 
+  592  vi ../rhce8/lesson15/vars/storage.yml 
+  593  ls -rlt
+  594  vi vars/storage.yml 
+  595  vi setup-storage.yml 
+  596  ansible-playbook setup-storage.yml 
+  597  ls -rlt
+  598  vi ../rhce8/lesson15/get_devices.yml 
+  599  ls -rlt
+  600  vi lab15.yml
+  601  ansible-playbook lab15.yml 
+  602  vi lab15.yml
+  603  ansible-playbook lab15.yml 
+  604  vi lab15.yml
+  605  ansible-playbook lab15.yml 
+  606  vi lab15.yml
+  607  ansible-playbook lab15.yml 
+  608  vi lab15.yml
+  609  ansible-playbook lab15.yml 
+  610  ls -rlt
+  611  cp lab15.yml lab15-1.yml
+  612  vi lab15-1.yml 
+  613  vi lab15.yml 
+  614  vi lab15-1.yml 
+  615  ansible-playbook lab15-1.yml 
+  616  vi lab15-1.yml 
+  617  ansible-playbook lab15-1.yml 
+  618  vi lab15-1.yml 
+  619  ansible-playbook lab15-1.yml 
+  620  vi lab15-1.yml 
+  621  ansible-playbook lab15-1.yml 
+  622  vi lab15-1.yml 
+  623  ansible-playbook lab15-1.yml 
+  624  vi lab15-1.yml 
+  625  ansible-playbook lab15-1.yml 
+  626  ls -rlt
+  627  vi lab15-1.yml 
+  628  ansible-doc set_fact
+  629  ls -rlt
+  630  ansible-galaxy list
+  631  cd /usr/share/ansible/roles
+  632  ls -lrt
+  633  cd rhel-system-roles.network
+  634  ls -rlt
+  635  cd tasks
+  636  ls -rlt
+  637  vi main.yml 
+  638  ssh ansible1
+  639  ls -rlt
+  640  cd ..
+  641  ls- lrt
+  642  cd
+  643  ls -rlt
+  644  cd rhce8/
+  645  ls -rlt
+  646  cd lesson16/
+  647  ls -rlt
+  648  cp setupnw.yml ../../project/
+  649  cp networkvars.yml ../../project/
+  650  cd ../../project/
+  651  ls -rlt
+  652  vi networkvars.yml 
+  653  vi setupnw.yml 
+  654  ansible-playbook setupnw.yml 
+  655  ssh ansible1
+  656  ls -rlt
+  657  vi networkvars.yml 
+  658  vi setupnw.yml 
+  659  vi networkvars.yml 
+  660  ssh ansible1
+  661  ansible-playbook setupnw.yml 
+  662  ssh ansible1
+  663  ls -rlt
+  664  vi setupnw.yml 
+  665  vi networkvars.yml 
+  666  ansible-playbook -C setupnw.yml 
+  667  ansible-playbook -vvv  setupnw.yml 
+  668  ssh ansible1
+  669  ansible-playbook -v  setupnw.yml 
+  670  vi networkvars.yml 
+  671  ansible-playbook -vv  setupnw.yml 
+  672  clear
+  673  ansible ansible1.example -m setup -a "gather_subset=network"
+  674  ansible ansible1.example.com -m setup -a "gather_subset=network"
+  675  ansible ansible1.example.com -m setup -a "gather_subset=network filter=ansible_interfaces"
+  676  ansible ansible1.example.com -m setup -a "gather_subset=network filter=ansible_enp8s0"
+  677  ls -rlt
+  678  vi setupnic.yml
+  679  vi setupnic.yml 
+  680  ansible-playbook setupnic.yml 
+  681  ansible -V
+  682  ansible -v
+  683  ansible 
+  684  ansible --version
+  685  sudo yum search NetworkManager-glib
+  686  sudo yum search NetworkManager
+  687  ls -rlt
+  688  cd ..
+  689  ls -rlt
+  690  mkdir module3
+  691  cp -R project/* module3/
+  692  cd module3
+  693  ls -rlt
+  694  cd ..
+  695  clear
+  696  ls -rlt
+  697  cd module2
+  698  ls -rlt
+  699  cd ..
+  700  ls -rlt
+  701  cd module3/
+  702  ls -rlt
+  703  mkdir project
+  704  mv * project/
+  705  ls -rlt
+  706  history > bash_history

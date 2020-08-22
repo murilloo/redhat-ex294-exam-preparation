@@ -1,0 +1,9 @@
+---
+network_provider: nm
+network_connections: 
+  - name: enp8s0
+    type: ethernet
+    ip:
+      address:
+        - 192.168.4.231/24
+    zone: external

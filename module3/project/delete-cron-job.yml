@@ -1,0 +1,12 @@
+- name: playbook to remove cron job
+  hosts: ansible1.example.com
+
+  tasks:
+
+    - name: remove cron job
+      cron:
+        state: absent
+        name: write message to file
+        cron_file: /etc/cron.d/keep-alive-messages
+        user: ansible
+

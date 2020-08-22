@@ -1,0 +1,12 @@
+- name: playbook to schedule at task
+  hosts: ansible1.example.com
+
+  tasks:
+
+    - name: schedule at task
+      at:
+        command: "date > /tmp/my-at-file"
+        count: 1
+        units: minutes
+        unique: yes
+        state: present

@@ -1,0 +1,12 @@
+---
+users:
+  - username: bill
+    groups: admin
+  - username: bob
+    groups: admin
+  - username: bea
+    groups: developers
+  - username: brenda
+    groups: dbas
+  - username: benny
+    groups: dbas

@@ -1,0 +1,4 @@
+usergroups:
+  - groupname: developers
+  - groupname: dbas
+  - groupname: admin
