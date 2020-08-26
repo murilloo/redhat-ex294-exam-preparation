@@ -1,0 +1,92 @@
+- name: playbook to configure loca repository server
+
+  hosts: localhost
+
+  vars:
+    document_root: "/var/www/repo"
+
+  tasks:
+
+    - name: install httpd and createrepo
+      yum:
+        name: 
+        - httpd
+        - createrepo
+        state: present
+
+    - name: generate template for apache
+      template:
+        src: ./templates/httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+      notify: restart httpd 
+
+    - name: create directory for repo
+      file:
+        state: directory
+        recurse: yes
+        path: /var/www/repo/iso
+
+    - name: mount rhel iso image to repo
+      mount:
+        path: /var/www/repo/iso
+        src: /home/ansible/exam/files/rhel-8.0-x86_64-dvd.iso
+        state: mounted
+        opts: loop
+        fstype: iso9660
+
+    - name: create repository
+      command: createrepo /var/www/repo
+
+    - name: check selinux state
+      command: getenforce
+      register: getenforce
+
+    - name: apply permissions
+      file:
+        path: /var/www/repo
+        mode: '0755'
+
+    - name: set acl when selinux permissive or disabled
+      acl:
+        path: /var/www/repo
+        entity: apache
+        etype: user
+        permissions: rwx
+        default: yes
+        state: present
+      when: "'Permissive' in getenforce.stdout"
+
+    - name: set selinux context for repo
+      sefcontext:
+        target: '/var/www/repo(/.*)?'
+        setype: httpd_sys_rw_content_t
+        state: present
+      when: "'Enforcing' in getenforce.stdout"
+
+    - name: apply selinux context labels
+      command: restorecon -Rv /var/www/repo
+
+    - name: configure service for apache
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: firewall is started
+      service:  
+        name: firewalld
+        state: started
+
+    - name: firewall is open
+      firewalld:
+        zone: public
+        service: http
+        permanent: yes
+        state: enabled
+
+  handlers:
+
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted

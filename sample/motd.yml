@@ -1,0 +1,10 @@
+- name: playbook with motd information
+
+  hosts: all
+
+  tasks:
+
+    - name: copy motd template to server
+      template:
+        src: ./templates/motd.j2
+        dest: /etc/motd

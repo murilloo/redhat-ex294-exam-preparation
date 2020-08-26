@@ -1,0 +1,27 @@
+- name: playbook to configure SSH
+
+  hosts: localhost
+
+  vars:
+    sshd_port: "22"
+    allowed_users: "ansible, murillo"
+    permit_root_login: "yes"
+
+  pre_tasks:
+
+    - name: get selinux state
+      debug:
+        msg: "{{ ansible_selinux['config_mode'] }}"
+
+    - name: fails if selinux not set
+      fail:
+        msg: "SELinux not Enforcing"
+      when: ansible_facts['selinux']['config_mode'] != 'enforcing'
+
+    - name: fails if OS is not RedHat
+      fail:
+        msg: "OS is not RedHat"
+      when: ansible_facts['os_family'] != 'RedHat'
+
+  roles:
+    - sshd

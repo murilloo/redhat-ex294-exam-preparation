@@ -1,0 +1,23 @@
+- name: playbook to create logical volumes
+
+  hosts: all
+
+  tasks:
+
+    - name: create logical volumes on the hosts
+      lvol:
+        vg: vgdata
+        lv: lvdata 
+        size: 2G
+      ignore_errors: true
+      register: lvcreateoutput
+
+    - name: fail if vgdata do not exist
+      fail:
+        msg: "Volume group do not exist"
+      when: "'not found' in lvcreateoutput.err"
+
+    - name: fail if insufficient space on vg
+      fail:
+        msg: "Not enough space in volume group"
+      when: "'insufficient' in lvcreateoutput.err"

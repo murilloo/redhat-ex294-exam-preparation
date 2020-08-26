@@ -1,0 +1,44 @@
+- name: playbook to create logical volumes
+
+  hosts: all
+
+  vars:
+
+    lvms:
+      - name: lvdata
+        size: 2G
+        vgroup: vgdata
+        size_cond: "2.00"
+
+  tasks:
+
+    - name: verify vgdata exists
+      command: vgs vgdata
+      register: vgsoutput
+      ignore_errors: true
+
+    - name: show message in case vgdata do not exist
+      debug:
+        msg: "Volume group: vgdata do not exist!"
+      when: "'not found' in vgsoutput.stderr"
+
+    - name: show message in case space is not available on vg
+      debug:
+        msg: "Insuficient space to create Logical volume"
+      when: ansible_facts['lvm']['vgs']['vgdata'] is defined and ansible_facts['lvm']['vgs']['vgdata']['size_g'] < item.size_cond
+      loop: "{{ lvms }}"
+
+#    - name: debug
+#      debug:
+#        msg: >
+#          VG size {{ ansible_facts['lvm']['vgs']['vgdata']['size_g'] }} < {{ item.size_cond }}
+#      loop: "{{ lvms }}"
+
+    - name: create logical volumes on the hosts
+      lvol:
+        vg: "{{ item.vgroup }}"
+        lv: "{{ item.name }}"
+        size: "{{ item.size }}"
+      when: ansible_facts['lvm']['vgs']['vgdata'] is defined and ansible_facts['lvm']['vgs']['vgdata']['size_g'] > item.size_cond
+      loop: "{{ lvms }}"
+

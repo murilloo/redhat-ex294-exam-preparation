@@ -1,0 +1,13 @@
+Welcome to the RedHat system!
+
+System memory: {{ ansible_facts['memtotal_mb'] }}
+
+Processor count: {{ ansible_facts['processor_count'] }}
+
+Primary disk size: {{ ansible_facts['devices']['vda']['size'] }}
+
+{% if ansible_facts['devices']['vdb'] is defined %}
+Secondary disk size: {{ ansible_facts['devices']['vdb']['size'] }}
+{% else %}
+Secondary disk size: NOT AVAILABLE
+{% endif %}

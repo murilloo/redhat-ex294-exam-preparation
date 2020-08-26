@@ -1,0 +1,10 @@
+- name: playbook to create /etc/hosts
+  
+  hosts: all
+
+  tasks:
+
+    - name: generate hosts file
+      template:
+        src: ./templates/hosts.j2
+        dest: /etc/hosts

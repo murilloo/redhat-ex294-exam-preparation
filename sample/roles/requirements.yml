@@ -1,0 +1,4 @@
+# from Ansible Galaxy
+- src: geerlingguy.redis
+
+- src: geerlingguy.nginx

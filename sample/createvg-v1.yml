@@ -1,0 +1,39 @@
+- name: play for partition creation on ansible1
+
+  hosts: ansible1.example.com
+
+  tasks:
+
+    - name: create partition
+      parted:
+        device: /dev/vdb
+        part_start: 1MiB
+        part_end: 1GiB
+        number: 1
+        state: present
+
+- name: play for partition creation on ansible3
+
+  hosts: ansible3.example.com
+
+  tasks:
+
+    - name: create partition
+      parted:
+        device: /dev/vdb
+        part_start: 1MiB
+        part_end: 3GiB
+        number: 1
+        state: present
+
+- name: play for volume group creation
+
+  hosts: all
+
+  tasks:
+
+    - name: create volume group
+      lvg:
+        vg: vgdata
+        pvs: /dev/vdb1
+      when: ansible_facts['devices']['vdb'] is defined

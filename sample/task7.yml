@@ -1,0 +1,79 @@
+- name: install and configure a web server
+  
+  hosts: webserver
+
+  vars:
+    http_port: 8089
+    web_package: httpd
+    web_service: httpd
+
+  tasks:
+
+    - name: install httpd
+      yum:
+        name: "{{ web_package }}"
+        state: present
+
+    - name: firewall is open for http
+      firewalld:
+        zone: public
+        port: "{{ http_port }}/tcp"
+        permanent: yes
+        immediate: yes
+        state: enabled
+
+    - name: create webserver home
+      file:
+        path: /var/www/web
+        state: directory
+        mode: 0755
+
+    - name: create index hello world
+      copy:
+        content: "hello world"
+        dest: /var/www/web/index.html
+
+    - name: copy http template
+      template:
+        src: ./templates/vhost.j2
+        dest: /etc/httpd/conf.d/vhost.conf
+      notify: restart httpd
+
+    - name: set selinux port for http
+      command: semanage port -a -t http_port_t -p tcp {{ http_port }}
+      ignore_errors: yes
+
+    - name: set selinux context for web
+      sefcontext:
+        target: '/var/www/web(/.*)?'
+        setype: httpd_sys_rw_content_t
+        state: present
+
+    - name: apply selinux context labels
+      command: restorecon -Rv /var/www/web
+
+    - name: service is started
+      service:
+        name: "{{ web_service }}"
+        state: started
+        enabled: yes
+
+  handlers:
+
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
+
+
+- name: install wget to web clients
+
+  hosts: webclients
+
+  tasks:
+
+    - name: install wget
+      yum:
+        name: 
+          - wget
+        state: present

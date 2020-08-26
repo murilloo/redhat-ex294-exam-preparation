@@ -1,0 +1,8 @@
+---
+- name: play to use galaxy nginx and redis role
+
+  hosts: ansible4.example.com
+
+  roles:
+    - role: geerlingguy.nginx
+    - role: geerlingguy.redis

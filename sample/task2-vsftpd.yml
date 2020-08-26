@@ -1,0 +1,68 @@
+- name: playbook to configure loca repository server
+
+  hosts: localhost
+
+  vars:
+    anonymous_enable: "YES"
+    anon_root: /var/ftp/repo
+
+  tasks:
+
+    - name: install vsftpd and createrepo
+      yum:
+        name: 
+        - vsftpd
+        - createrepo
+        state: present
+
+    - name: generate template for vsftpd
+      template:
+        src: ./templates/vsftpd.conf.j2
+        dest: /etc/vsftpd/vsftpd.conf
+      notify: restart vsftpd 
+
+    - name: create directory for repo
+      file:
+        state: directory
+        recurse: yes
+        path: /var/ftp/repo/iso
+
+    - name: mount rhel iso image to repo
+      mount:
+        path: /var/ftp/repo/iso
+        src: /home/ansible/exam/files/rhel-8.0-x86_64-dvd.iso
+        state: mounted
+        opts: loop
+        fstype: iso9660
+
+    - name: create repository
+      command: createrepo /var/ftp/repo
+
+    - name: apply permissions
+      file:
+        path: /var/ftp/repo 
+        mode: '0755'
+
+    - name: allow ftpd full access
+      seboolean:
+        name: ftpd_full_access
+        state: yes
+        persistent: yes
+
+    - name: configure service for vsftpd
+      service:
+        name: vsftpd
+        state: started
+        enabled: yes
+
+    - name: firewall is stopped
+      service:  
+        name: firewalld
+        state: stopped
+
+  handlers:
+
+    - name: restart vsftpd
+      service:
+        name: vsftpd
+        state: restarted

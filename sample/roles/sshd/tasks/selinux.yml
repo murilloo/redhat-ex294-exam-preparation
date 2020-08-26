@@ -1,0 +1,9 @@
+#- name: configure selinux
+#  seboolean:
+#    name: nis_enabled
+#    state: yes
+#    persistent: yes
+
+#- name: configure selinux
+#  command: semanage port -a -t ssh_port_t -p tcp {{ sshd_port }}
+#  ignore_errors: yes

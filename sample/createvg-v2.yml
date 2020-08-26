@@ -1,0 +1,40 @@
+- name: playbook to setup partitions and volume group
+
+  hosts: all
+
+  vars:
+    partitions:
+      - host: ansible1
+        number: 1
+        disk: /dev/vdb
+        start: 1MiB
+        end: 1GiB
+
+      - host: ansible3
+        number: 1
+        disk: /dev/vdb
+        start: 1MiB
+        end: 3GiB
+
+    vgs:
+      - name: vgdata
+        pv: /dev/vdb1
+
+  tasks:
+
+    - name: create partition on hosts
+      parted:
+        device: "{{ item.disk }}"
+        part_start: "{{item.start }}"
+        part_end: "{{ item.end }}"
+        number: "{{ item.number }}"
+        state: present
+      when: ansible_facts['devices']['vdb'] is defined and ansible_facts['hostname'] == item.host
+      loop: "{{ partitions }}"
+
+    - name: create volume group on hosts
+      lvg:
+        vg: "{{ item.name }}"
+        pvs: "{{ item.pv }}"
+      loop: "{{ vgs }}"
+      when: ansible_facts['devices']['vdb'] is defined

@@ -1,0 +1,11 @@
+---
+# tasks file for sshd
+
+- include: template.yml
+  tags: template
+
+- include: firewall.yml
+  tags: firewall
+
+- include: selinux.yml
+  tags: selinux

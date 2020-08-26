@@ -1,0 +1,7 @@
+- name: verify firewall is open
+  firewalld:
+    zone: public
+    port: "{{ sshd_port }}/tcp"
+    permanent: yes
+    state: enabled
+    immediate: yes
